@@ -38,8 +38,13 @@ public class InputManager : MonoBehaviour {
         }
     }
 
-    public Vector2 GetMovementDirection()
-    {
-        return customInput.GetMovementDirection();
-    }
+	public Vector2 GetMovementDirection()
+	{
+		return customInput.GetMovementDirection();
+	}
+
+	public Vector2 GetAimDirection()
+	{
+		return customInput.GetAimDirection();
+	}
 }

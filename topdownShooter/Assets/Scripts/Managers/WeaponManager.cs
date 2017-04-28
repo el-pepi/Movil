@@ -9,20 +9,36 @@ public class WeaponManager : MonoBehaviour {
 	List<Weapon> weapons;
 	int weaponIndex;
 
+	public ObjectPool bulletPool;
+
+	public static WeaponManager instance;
+
 	void Awake(){
+		instance = this;
 		weapons = new List<Weapon> ();
 
         InputManager.instance.fireDownEvent.AddListener(OnFirePress);
         InputManager.instance.fireUpEvent.AddListener(OnFireRelease);
         InputManager.instance.weaponSwitchEvent.AddListener(SwitchWeapon);
+
+		bulletPool = GetComponent<ObjectPool> ();
     }
-	
+	float rot ;
 	void Update () {
 #if UNITY_EDITOR
         if (Input.GetKeyDown (KeyCode.RightControl)) {
 			GetAllWeapons ();
 		}
 #endif
+		if (actualWeapon) {
+			rot = MathStuff.GetRotationToLook (actualWeapon.transform.position, (Vector2)actualWeapon.transform.position + InputManager.instance.GetAimDirection ());
+			if (rot < 0 || rot>180) {
+				actualWeapon.spriteRenderer.flipX = true;
+			} else {
+				actualWeapon.spriteRenderer.flipX = false;
+			}
+			actualWeapon.transform.rotation = Quaternion.Euler (0,0,rot);
+		}
     }
 
 	void GetAllWeapons(){

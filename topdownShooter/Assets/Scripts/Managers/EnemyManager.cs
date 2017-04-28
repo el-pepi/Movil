@@ -18,6 +18,6 @@ public class EnemyManager : MonoBehaviour {
     void SpawnEnemy()
     {
         GameObject go = EnemyBuilder.instance.Build((EnemyBuilder.EnemyType)Random.Range(0,2));
-        go.transform.position = PlayerManager.instance.GetPlayer().transform.position + Random.onUnitSphere * 30f;
+		go.transform.position = (Vector2)PlayerManager.instance.GetPlayer().transform.position + Random.insideUnitCircle.normalized * 30f;
     }
 }

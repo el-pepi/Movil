@@ -14,6 +14,10 @@ public class Character : MonoBehaviour {
 		spriteController = GetComponent<SpriteControler> ();
 	}
 
+	public void SetHealth(float value){
+		health = value;
+	}
+
 	public void TakeDamage(float value){
 		health -= value;
 		if (health <= 0) {
@@ -23,5 +27,6 @@ public class Character : MonoBehaviour {
 
 	void Die(){
 		print ("ded");
+		gameObject.SetActive (false);
 	}
 }

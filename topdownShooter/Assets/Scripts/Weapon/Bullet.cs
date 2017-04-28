@@ -28,4 +28,13 @@ public class Bullet : MonoBehaviour {
 	void TurnOff(){
 		gameObject.SetActive (false);
 	}
+
+	void OnTriggerEnter2D(Collider2D col){
+		print (col.tag);
+		if (col.tag != "Enemy") {
+			return;
+		}
+		col.GetComponent<Character> ().TakeDamage (10f);
+		TurnOff ();
+	}
 }

@@ -9,12 +9,16 @@ public class CharacterMovement : MonoBehaviour {
 
 	Rigidbody2D rBody;
 
+	Character character;
+
 	void Start () {
 		rBody = GetComponent<Rigidbody2D> ();
+		character = GetComponent<Character> ();
 	}
 
 	void FixedUpdate(){
-		rBody.velocity = direction * speed;
+		rBody.velocity = direction.normalized * speed;
+		character.spriteController.pointToLook = (Vector2)transform.position + direction;
 	}
 
 	public Vector2 GetPosition(){

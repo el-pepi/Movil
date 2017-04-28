@@ -11,14 +11,15 @@ public class PlayerManager : MonoBehaviour {
 	void Awake () {
         instance = this;
         player = ((GameObject)Instantiate(Resources.Load("Character"))).GetComponent<Character>();
+		player.GetComponent<Rigidbody2D> ().mass = 10;
 	}
 	
 	void Update () {
         player.movement.direction = InputManager.instance.GetMovementDirection();
-        if (player.movement.direction.magnitude > 0)
+		player.spriteController.pointToLook = player.movement.GetPosition() + InputManager.instance.GetAimDirection();
+        /*if (player.movement.direction.magnitude > 0)
         {
-            player.spriteController.pointToLook = player.movement.GetPosition() + player.movement.direction;
-        }
+        }*/
     }
 
     public Character GetPlayer() {

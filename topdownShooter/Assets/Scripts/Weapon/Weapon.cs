@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour {
 
 	public string weaponName;
 
-	SpriteRenderer spriteRenderer;
+	public SpriteRenderer spriteRenderer;
 
 	void Awake(){
 		spriteRenderer = GetComponent<SpriteRenderer> ();

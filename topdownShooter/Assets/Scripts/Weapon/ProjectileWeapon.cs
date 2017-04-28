@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ProjectileWeapon : Weapon {
 
-	public ObjectPool bulletPool;
-
 	public float fireRate;
 	public bool automatic;
 
@@ -30,6 +28,9 @@ public class ProjectileWeapon : Weapon {
 	}
 
 	void Update(){
+		if (automatic == false) {
+			return;
+		}
 		Mathf.Clamp (shotTimer -= Time.deltaTime, 0, fireRate);
 		if (pressed && shotTimer <= 0) {
 			shotTimer = fireRate;
@@ -38,7 +39,11 @@ public class ProjectileWeapon : Weapon {
 	}
 
 	void Shoot(){
-		print ("Bang");
+		GameObject b = WeaponManager.instance.bulletPool.getPooledObject ();
+		b.transform.position = transform.position;
+		b.transform.rotation = Quaternion.Euler(0,0,180+MathStuff.GetRotationToLook(b.transform.position,(Vector2)transform.position + InputManager.instance.GetAimDirection()));
+		b.GetComponent<Rigidbody2D> ().velocity=b.transform.up * 30f;
+		b.GetComponent<Bullet> ().Reset ();
 	}
 
 	public override void OnSwitchOff ()
@@ -48,13 +53,10 @@ public class ProjectileWeapon : Weapon {
 		if (pressed) {
 			OnFireRelease ();
 		}
-		print ("Switched OFF " + weaponName);
 	}
 
 	public override void OnSwitchOn ()
 	{
 		base.OnSwitchOn ();
-
-		print ("Switch ON " + weaponName);
 	}
 }
