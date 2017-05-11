@@ -6,7 +6,7 @@ public class ManagerInstantiator : MonoBehaviour {
 
     public GameObject[] managers;
 
-	void Start () {
+	void Awake () {
 		foreach(GameObject m in managers)
         {
             Instantiate(m).transform.SetParent(transform);

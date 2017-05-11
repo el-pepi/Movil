@@ -38,4 +38,15 @@ public class ObjectPool : MonoBehaviour {
 		GameObject go = Instantiate (obj)as GameObject;
 		availableObjects.Add (go);
 	}
+
+    public void PoolAll()
+    {
+        foreach (GameObject g in availableObjects)
+        {
+            if (g.activeSelf)
+            {
+                g.SetActive(false);
+            }
+        }
+    }
 }

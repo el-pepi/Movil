@@ -8,7 +8,7 @@ public class WeaponFactory : MonoBehaviour {
 
 	public GameObject[] objects;
 
-	void Start () {
+	void Awake () {
 		instance = this;
 	}
 

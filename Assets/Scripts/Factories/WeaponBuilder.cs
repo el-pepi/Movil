@@ -12,7 +12,7 @@ public class WeaponBuilder : MonoBehaviour {
 		count
 	};
 
-	void Start () {
+	void Awake () {
 		instance = this;
 	}
 

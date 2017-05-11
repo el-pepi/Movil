@@ -11,7 +11,7 @@ public class CharacterMovement : MonoBehaviour {
 
 	Character character;
 
-	void Start () {
+	void Awake () {
 		rBody = GetComponent<Rigidbody2D> ();
 		character = GetComponent<Character> ();
 	}

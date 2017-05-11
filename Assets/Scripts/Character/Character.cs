@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour {
 
@@ -9,24 +8,39 @@ public class Character : MonoBehaviour {
 
 	float health = 100;
 
-	void Awake () {
+    public UnityEvent deathEvent;
+    public UnityEvent hpUpdateEvent;
+
+    void Awake () {
 		movement = GetComponent<CharacterMovement> ();
 		spriteController = GetComponent<SpriteControler> ();
-	}
+        deathEvent = new UnityEvent();
+        hpUpdateEvent = new UnityEvent();
+    }
 
 	public void SetHealth(float value){
 		health = value;
-	}
+        hpUpdateEvent.Invoke();
+    }
 
 	public void TakeDamage(float value){
-		health -= value;
+        if (health <= 0)
+        {
+            return;
+        }
+        SetHealth(health -= value);
 		if (health <= 0) {
 			Die ();
 		}
 	}
 
 	void Die(){
-		print ("ded");
+        deathEvent.Invoke();
 		gameObject.SetActive (false);
 	}
+
+    public float GetHealth()
+    {
+        return health;
+    }
 }

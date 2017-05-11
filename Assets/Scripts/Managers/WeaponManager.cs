@@ -12,8 +12,9 @@ public class WeaponManager : MonoBehaviour {
 	public ObjectPool bulletPool;
 
 	public static WeaponManager instance;
+    float rot;
 
-	void Awake(){
+    void Awake(){
 		instance = this;
 		weapons = new List<Weapon> ();
 
@@ -23,7 +24,14 @@ public class WeaponManager : MonoBehaviour {
 
 		bulletPool = GetComponent<ObjectPool> ();
     }
-	float rot ;
+
+    void Start()
+    {
+
+        GetAllWeapons();
+    }
+
+
 	void Update () {
 #if UNITY_EDITOR
         if (Input.GetKeyDown (KeyCode.RightControl)) {
@@ -48,7 +56,7 @@ public class WeaponManager : MonoBehaviour {
             go.transform.localPosition = Vector3.zero;
 			weapons.Add (go.GetComponent<Weapon>());
 		}
-		actualWeapon = weapons [0];
+		actualWeapon = weapons [1];
         actualWeapon.OnSwitchOn();
 	}
 
