@@ -29,18 +29,22 @@ public class EnemyBuilder : MonoBehaviour {
 
 		go.layer = LayerMask.NameToLayer ("Enemy");
 
+
         switch (type)
         {
 		case EnemyType.Normal:
 			enemyCharacter.movement.speed = 7f;
+            go.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Zombie1");
 			enemyCharacter.SetHealth (40f);
                 break;
             case EnemyType.Fast:
-			enemyCharacter.movement.speed = 15f;
+			enemyCharacter.movement.speed = 13f;
+            go.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("ZombieFast");
 			enemyCharacter.SetHealth (20f);
                 break;
             case EnemyType.Strong:
 			enemyCharacter.movement.speed = 5f;
+            go.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("ZombieHeavy");
 			enemyCharacter.SetHealth (100f);
                 break;
         }

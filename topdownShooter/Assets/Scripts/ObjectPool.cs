@@ -30,7 +30,7 @@ public class ObjectPool : MonoBehaviour {
 
 	GameObject GetFromAvailablePool(){
 		GameObject go = availableObjects [0];
-		availableObjects.RemoveAt (0);
+		//availableObjects.RemoveAt (0);
 		return go;
 	}
 
