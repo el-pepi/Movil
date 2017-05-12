@@ -11,7 +11,8 @@ public class PlayerManager : MonoBehaviour {
         player = ((GameObject)Instantiate(Resources.Load("Character"))).GetComponent<Character>();
 		player.GetComponent<Rigidbody2D> ().mass = 10;
         player.gameObject.SetActive(false);
-	}
+        player.gameObject.layer = LayerMask.NameToLayer("Player");
+    }
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class PlayerManager : MonoBehaviour {
         if(GameManager.instance.state == GameState.Game)
         {
             player.SetHealth(100f);
+            player.transform.position = Vector2.zero;
         }
     }
 

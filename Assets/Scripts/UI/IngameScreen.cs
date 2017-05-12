@@ -8,6 +8,7 @@ public class IngameScreen : MonoBehaviour {
 	void Start () {
         GameManager.instance.StateChangeEvent.AddListener(GameStateChanged);
         PlayerManager.instance.GetPlayer().hpUpdateEvent.AddListener(UpdatePlayerHealth);
+        gameObject.SetActive(false);
     }
 
     void GameStateChanged()

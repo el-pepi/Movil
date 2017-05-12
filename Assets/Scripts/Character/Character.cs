@@ -7,6 +7,7 @@ public class Character : MonoBehaviour {
 	public SpriteControler spriteController;
 
 	float health = 100;
+    public float startHealth = 100;
 
     public UnityEvent deathEvent;
     public UnityEvent hpUpdateEvent;
@@ -35,6 +36,7 @@ public class Character : MonoBehaviour {
 	}
 
 	void Die(){
+        ParticleManager.instance.Emit("BloodExplosion",transform.position,1);
         deathEvent.Invoke();
 		gameObject.SetActive (false);
 	}
@@ -42,5 +44,10 @@ public class Character : MonoBehaviour {
     public float GetHealth()
     {
         return health;
+    }
+
+    public void Reset()
+    {
+        health = startHealth;
     }
 }

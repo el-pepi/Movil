@@ -12,7 +12,8 @@ public class EnemyBuilder : MonoBehaviour {
     {
         Normal,
         Fast,
-        Strong
+        Strong,
+        count
     };
 
 	void Awake () {
@@ -36,16 +37,19 @@ public class EnemyBuilder : MonoBehaviour {
 			enemyCharacter.movement.speed = 7f;
             go.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Zombie1");
 			enemyCharacter.SetHealth (40f);
+                enemyCharacter.startHealth = 40f;
                 break;
             case EnemyType.Fast:
 			enemyCharacter.movement.speed = 13f;
             go.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("ZombieFast");
 			enemyCharacter.SetHealth (20f);
+                enemyCharacter.startHealth = 20f;
                 break;
             case EnemyType.Strong:
 			enemyCharacter.movement.speed = 5f;
             go.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("ZombieHeavy");
 			enemyCharacter.SetHealth (100f);
+                enemyCharacter.startHealth = 100f;
                 break;
         }
 

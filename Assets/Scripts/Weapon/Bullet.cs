@@ -30,11 +30,11 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		print (col.tag);
 		if (col.tag != "Enemy") {
 			return;
 		}
 		col.GetComponent<Character> ().TakeDamage (10f);
+        ParticleManager.instance.Emit("Blood",transform.position,1);
 		TurnOff ();
 	}
 }
