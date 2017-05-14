@@ -17,9 +17,9 @@ public class InputManager : MonoBehaviour {
     {
         instance = this;
 
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_EDITOR
         customInput = new InputStandalone();
-#elif UNITI_ANDROID
+#elif UNITY_ANDROID
         GameObject mobileInputUI = Instantiate(Resources.Load<GameObject>("MobileInput"));
         mobileInputUI.transform.SetParent(GameObject.Find("Canvas").transform,false);
         customInput = mobileInputUI.GetComponent<InputMobile>();

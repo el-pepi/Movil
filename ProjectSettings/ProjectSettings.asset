@@ -6,11 +6,11 @@ PlayerSettings:
   serializedVersion: 11
   productGUID: 23bb9e790eef305469635aaacc2c7d69
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: franco giustini
   productName: topdownShooter
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -136,7 +136,7 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.Company.ProductName
+    Android: com.FrancoGiustini.TDS
     Standalone: unity.DefaultCompany.topdownShooter
     Tizen: com.Company.ProductName
     iOS: com.Company.ProductName
@@ -216,8 +216,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/user/Documents/Movil/buildkey.keystore
+  AndroidKeyaliasName: release
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1

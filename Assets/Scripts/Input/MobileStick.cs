@@ -22,6 +22,19 @@ public class MobileStick : EventTrigger {
         image = transform.GetChild(0).gameObject;
     }
 
+    void Start()
+    {
+        GameManager.instance.StateChangeEvent.AddListener(OnStartGame);
+    }
+
+    void OnStartGame()
+    {
+        if (GameManager.instance.state == GameState.Start)
+        {
+            OnEndDrag(null);
+        }
+    }
+
     public override void OnBeginDrag(PointerEventData eventData)
     {
         initialPos = eventData.position;
