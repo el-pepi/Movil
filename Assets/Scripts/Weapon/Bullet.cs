@@ -1,40 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : Projectile {
 
-	public CharacterMovement movement;
-	public float lifeTime = 3f;
-
-	float actualLifetime;
-
-	void Start () {
-		movement = GetComponent<CharacterMovement> ();
-	}
-	
-	void Update () {
-		actualLifetime -= Time.deltaTime;
-		if (actualLifetime <= 0) {
-			TurnOff();
-		}
-	}
-
-	public void Reset(){
-		actualLifetime = lifeTime;
-		gameObject.SetActive (true);
-	}
-
-	void TurnOff(){
-		gameObject.SetActive (false);
-	}
-
-	void OnTriggerEnter2D(Collider2D col){
-		if (col.tag != "Enemy") {
-			return;
-		}
-		col.GetComponent<Character> ().TakeDamage (10f);
-        ParticleManager.instance.Emit("Blood",transform.position,1);
-		TurnOff ();
-	}
+    protected override void OnHit(Collider2D col)
+    {
+        base.OnHit(col);
+        col.GetComponent<Character>().TakeDamage(10f);
+        ParticleManager.instance.Emit("Blood", transform.position, 1);
+        TurnOff();
+    }
+    
 }

@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour {
     {
         player.deathEvent.AddListener(OnPlayerDeath);
         GameManager.instance.StateChangeEvent.AddListener(OnGameStateChange);
+        Instantiate<GameObject>(Resources.Load<GameObject>("MuzzleFlash"), player.transform.GetChild(0));
     }
 	
 	void Update () {

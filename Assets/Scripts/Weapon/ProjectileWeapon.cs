@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectileWeapon : Weapon {
 
 	public float fireRate;
 	public bool automatic;
+    public int ammoType;
 
 	bool pressed;
 	float shotTimer;
@@ -39,11 +38,14 @@ public class ProjectileWeapon : Weapon {
 	}
 
 	void Shoot(){
-		GameObject b = WeaponManager.instance.bulletPool.getPooledObject ();
+		GameObject b = WeaponManager.instance.projectilePools[ammoType].getPooledObject ();
 		b.transform.position = transform.position;
 		b.transform.rotation = Quaternion.Euler(0,0,180+MathStuff.GetRotationToLook(b.transform.position,(Vector2)transform.position + InputManager.instance.GetAimDirection()));
-		b.GetComponent<Rigidbody2D> ().velocity=b.transform.up * 30f;
-		b.GetComponent<Bullet> ().Reset ();
+        b.transform.Translate(Vector3.right * 0.5f, Space.Self);
+        b.GetComponent<Rigidbody2D> ().velocity=b.transform.up * 30f;
+		b.GetComponent<Projectile> ().Reset ();
+
+        WeaponManager.instance.fireEvent.Invoke();
 	}
 
 	public override void OnSwitchOff ()

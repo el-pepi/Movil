@@ -9,6 +9,7 @@ public class WeaponBuilder : MonoBehaviour {
 	public enum weaponType{
 		pistol,
 		submachine,
+        rocket,
 		count
 	};
 
@@ -24,15 +25,24 @@ public class WeaponBuilder : MonoBehaviour {
 			ProjectileWeapon pistol = go.AddComponent<ProjectileWeapon> ();
 			pistol.automatic = false;
 			pistol.weaponName = "Pistol";
+                pistol.ammoType = 0;
 			break;
 
 		case weaponType.submachine:
 			ProjectileWeapon smg = go.AddComponent<ProjectileWeapon> ();
 			smg.automatic = true;
-			smg.fireRate = 0.2f;
-			smg.weaponName = "smg";
-			break;
-		}
+			smg.fireRate = 0.1f;
+			smg.weaponName = "SMG";
+                smg.ammoType = 0;
+                break;
+        case weaponType.rocket:
+            ProjectileWeapon rl = go.AddComponent<ProjectileWeapon>();
+            rl.automatic = true;
+            rl.fireRate = 0.4f;
+            rl.weaponName = "Rocket launcher";
+                rl.ammoType = 1;
+                break;
+        }
 		return go;
 	}
 }

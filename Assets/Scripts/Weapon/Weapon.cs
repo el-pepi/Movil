@@ -1,15 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
 	public string weaponName;
-
-	public SpriteRenderer spriteRenderer;
+    
 
 	void Awake(){
-		spriteRenderer = GetComponent<SpriteRenderer> ();
 		OnSwitchOff ();
 	}
 
@@ -18,10 +14,8 @@ public class Weapon : MonoBehaviour {
 	public virtual void OnFireRelease(){
 	}
 	public virtual void OnSwitchOff(){
-		spriteRenderer.enabled = false;
 	}
 	public virtual void OnSwitchOn(){
-		spriteRenderer.enabled = true;
 	}
 
 }

@@ -1,18 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponManager : MonoBehaviour {
 
-	Weapon actualWeapon;
+    [System.NonSerialized]
+    public Weapon actualWeapon;
 
 	List<Weapon> weapons;
 	int weaponIndex;
 
-	public ObjectPool bulletPool;
+    public ObjectPool[] projectilePools;
 
-	public static WeaponManager instance;
+    public static WeaponManager instance;
     float rot;
+
+    [System.NonSerialized]
+    public UnityEvent fireEvent;
 
     void Awake(){
 		instance = this;
@@ -21,32 +25,14 @@ public class WeaponManager : MonoBehaviour {
         InputManager.instance.fireDownEvent.AddListener(OnFirePress);
         InputManager.instance.fireUpEvent.AddListener(OnFireRelease);
         InputManager.instance.weaponSwitchEvent.AddListener(SwitchWeapon);
-
-		bulletPool = GetComponent<ObjectPool> ();
+        
+        fireEvent = new UnityEvent();
     }
 
     void Start()
     {
 
         GetAllWeapons();
-    }
-
-
-	void Update () {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown (KeyCode.RightControl)) {
-			GetAllWeapons ();
-		}
-#endif
-		if (actualWeapon) {
-			rot = MathStuff.GetRotationToLook (actualWeapon.transform.position, (Vector2)actualWeapon.transform.position + InputManager.instance.GetAimDirection ());
-			if (rot < 0 || rot>180) {
-				actualWeapon.spriteRenderer.flipX = true;
-			} else {
-				actualWeapon.spriteRenderer.flipX = false;
-			}
-			actualWeapon.transform.rotation = Quaternion.Euler (0,0,rot);
-		}
     }
 
 	void GetAllWeapons(){
