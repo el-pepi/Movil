@@ -14,6 +14,7 @@ public class ObjectPool : MonoBehaviour {
 		int i = startSize;
 		while (i > 0) {
 			AddObjectToPool ();
+            i--;
 		}
 	}
 

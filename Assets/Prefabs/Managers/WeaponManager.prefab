@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1085827888681088, guid: d7bf775d988c8054893efa047f0d92ff, type: 2}
-  startSize: 0
+  startSize: 10
 --- !u!114 &114548268791823140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1085827888681088, guid: 83f50ad4218c31f4f9c99921549387e2, type: 2}
-  startSize: 0
+  startSize: 50
 --- !u!114 &114557119593937190
 MonoBehaviour:
   m_ObjectHideFlags: 1
