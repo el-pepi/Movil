@@ -25,10 +25,10 @@ public class InputMobile : MonoBehaviour ,IInput
         fireDown = fireUp = false;
     }
 
-    void LateUpdate()
+    /*void LateUpdate()
     {
         fireDown = fireUp = false;
-    }
+    }*/
 
     void OnFireDown()
     {
@@ -54,12 +54,22 @@ public class InputMobile : MonoBehaviour ,IInput
 
     public bool GetFireDown()
     {
-        return fireDown;
+        if (fireDown)
+        {
+            fireDown = false;
+            return true;
+        }
+        return false;
     }
 
     public bool GetFireUp()
-    {
-        return fireUp;
+    { 
+        if (fireUp)
+        {
+            fireUp = false;
+            return true;
+        }
+        return false;
     }
 
     public Vector2 GetMovementDirection()
