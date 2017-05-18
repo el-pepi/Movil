@@ -18,6 +18,8 @@ public class WeaponManager : MonoBehaviour {
     [System.NonSerialized]
     public UnityEvent fireEvent;
 
+    public float weaponTimer = 0;
+
     void Awake(){
 		instance = this;
 		weapons = new List<Weapon> ();
@@ -25,14 +27,35 @@ public class WeaponManager : MonoBehaviour {
         InputManager.instance.fireDownEvent.AddListener(OnFirePress);
         InputManager.instance.fireUpEvent.AddListener(OnFireRelease);
         InputManager.instance.weaponSwitchEvent.AddListener(SwitchWeapon);
-        
+        GameManager.instance.StateChangeEvent.AddListener(OnGamestateChange);
+
         fireEvent = new UnityEvent();
     }
 
     void Start()
     {
-
         GetAllWeapons();
+    }
+
+    void Update()
+    {
+        if (weaponTimer > 0)
+        {
+            weaponTimer -= Time.deltaTime;
+            if (weaponTimer <= 0)
+            {
+                SwitchToWeapon(1);
+            }
+        }
+    }
+
+    void OnGamestateChange()
+    {
+        if(GameManager.instance.state == GameState.Game)
+        {
+            weaponTimer = 0;
+            SwitchToWeapon(1);
+        }
     }
 
 	void GetAllWeapons(){
@@ -45,6 +68,21 @@ public class WeaponManager : MonoBehaviour {
 		actualWeapon = weapons [1];
         actualWeapon.OnSwitchOn();
 	}
+
+    public void SwitchToWeapon(int weaponNumber)
+    {
+        if (weaponNumber < 0 || weaponNumber>=weapons.Count) { return; }
+
+        actualWeapon.OnSwitchOff();
+
+        actualWeapon = weapons[weaponNumber];
+        actualWeapon.OnSwitchOn();
+
+        if (weaponNumber != 1)
+        {
+            weaponTimer = 15f;
+        }
+    }
 
     void SwitchWeapon()
     {

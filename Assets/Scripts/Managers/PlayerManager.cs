@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour {
 		player.GetComponent<Rigidbody2D> ().mass = 10;
         player.gameObject.SetActive(false);
         player.gameObject.layer = LayerMask.NameToLayer("Player");
+        player.tag = "Player";
     }
 
     void Start()
