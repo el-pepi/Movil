@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
 	void Awake () {
         character = GetComponent<Character>();
         playerTrans = PlayerManager.instance.GetPlayer().transform;
+
+        character.deathEvent.AddListener(OnDeath);
 	}
 	
 	void Update () {
@@ -33,6 +35,14 @@ public class Enemy : MonoBehaviour {
         {
             PlayerManager.instance.GetPlayer().TakeDamage(attackDamage);
             attackDelay = delayBetweenAttacks;
+        }
+    }
+
+    void OnDeath()
+    {
+        if (Random.Range(0, 10) == 1)
+        {
+            Instantiate(Resources.Load<GameObject>("RpgItem"),transform.position,Quaternion.identity);
         }
     }
 }

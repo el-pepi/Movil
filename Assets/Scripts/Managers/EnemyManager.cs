@@ -3,6 +3,7 @@
 public class EnemyManager : MonoBehaviour {
 
     float spawnTimer = 3f;
+    float timeToSpawn = 2f;
 
     Pool[] enemyPools;
 
@@ -22,7 +23,11 @@ public class EnemyManager : MonoBehaviour {
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0)
         {
-            spawnTimer = 2f;
+            spawnTimer = timeToSpawn;
+            if (timeToSpawn > 1f)
+            {
+                timeToSpawn -= 0.1f;
+            }
             SpawnEnemy();
         }
 	}
@@ -54,6 +59,7 @@ public class EnemyManager : MonoBehaviour {
         if (GameManager.instance.state == GameState.GameOver)
         {
             spawnTimer = 3;
+            timeToSpawn = 2f;
             foreach(Pool p in enemyPools)
             {
                 p.ResetAll();

@@ -38,7 +38,7 @@ public class WeaponBuilder : MonoBehaviour {
         case weaponType.rocket:
             ProjectileWeapon rl = go.AddComponent<ProjectileWeapon>();
             rl.automatic = true;
-            rl.fireRate = 0.4f;
+            rl.fireRate = 0.25f;
             rl.weaponName = "Rocket launcher";
                 rl.ammoType = 1;
                 break;
