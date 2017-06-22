@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour {
         }
     }
 
-    public void Reset()
+	public virtual void Reset()
     {
         actualLifetime = lifeTime;
         gameObject.SetActive(true);
