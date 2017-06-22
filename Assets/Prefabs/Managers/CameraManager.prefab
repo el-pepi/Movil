@@ -51,3 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7d2104039942043a1b9eb3eadee9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapSize: {x: 65, y: 65}
