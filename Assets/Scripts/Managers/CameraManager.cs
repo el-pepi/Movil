@@ -29,6 +29,6 @@ public class CameraManager : MonoBehaviour {
 	}
 
 	void OnPlayerHit(){
-		camAnim.Play ("shake" + Random.Range(1,3));
+		camAnim.SetTrigger ("shake" + Random.Range (1, 3));
 	}
 }

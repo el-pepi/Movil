@@ -5,6 +5,7 @@ public class IngameScreen : MonoBehaviour {
 
     public Text healthLabel;
     public Image weaponTimer;
+	public Animator glowAnim;
 
 	void Start () {
         GameManager.instance.StateChangeEvent.AddListener(GameStateChanged);
@@ -25,5 +26,6 @@ public class IngameScreen : MonoBehaviour {
     void UpdatePlayerHealth()
     {
         healthLabel.text = ((int)PlayerManager.instance.GetPlayer().GetHealth()).ToString("");
+		glowAnim.SetTrigger ("Hit");
     }
 }
