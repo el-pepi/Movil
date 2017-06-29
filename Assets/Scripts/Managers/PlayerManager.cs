@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour {
         player.gameObject.SetActive(false);
         player.gameObject.layer = LayerMask.NameToLayer("Player");
         player.tag = "Player";
+		((GameObject)Instantiate (Resources.Load ("Smoke"))).transform.SetParent (player.transform);
     }
 
     void Start()
