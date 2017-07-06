@@ -28,7 +28,10 @@ public class CameraManager : MonoBehaviour {
 		cam.transform.position = pos;
 	}
 
-	void OnPlayerHit(){
-		camAnim.SetTrigger ("shake" + Random.Range (1, 3));
+	void OnPlayerHit(hpUpdateType  type)
+    {
+        if(type == hpUpdateType.damage) { 
+		    camAnim.SetTrigger ("shake" + Random.Range (1, 3));
+        }
 	}
 }

@@ -40,9 +40,6 @@ public class Enemy : MonoBehaviour {
 
     void OnDeath()
     {
-        if (Random.Range(0, 10) == 1)
-        {
-            //Instantiate(Resources.Load<GameObject>("RpgItem"),transform.position,Quaternion.identity);
-        }
+        WeaponManager.instance.WeaponDrop(transform.position);
     }
 }

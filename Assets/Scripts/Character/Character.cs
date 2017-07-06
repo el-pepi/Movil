@@ -1,7 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+public enum hpUpdateType
+{
+    reset,
+    heal,
+    damage
+}
+
+public class HpUpdateEvent : UnityEvent<hpUpdateType> { }
+
 public class Character : MonoBehaviour {
+
+
 
 	public CharacterMovement movement;
 	public SpriteControler spriteController;
@@ -10,18 +21,19 @@ public class Character : MonoBehaviour {
     public float startHealth = 100;
 
     public UnityEvent deathEvent;
-    public UnityEvent hpUpdateEvent;
+    public HpUpdateEvent hpUpdateEvent;
 
     void Awake () {
 		movement = GetComponent<CharacterMovement> ();
 		spriteController = GetComponent<SpriteControler> ();
         deathEvent = new UnityEvent();
-        hpUpdateEvent = new UnityEvent();
+        hpUpdateEvent = new HpUpdateEvent();
     }
 
-	public void SetHealth(float value){
+	public void SetHealth(float value , hpUpdateType type = hpUpdateType.reset)
+    {
 		health = value;
-        hpUpdateEvent.Invoke();
+        hpUpdateEvent.Invoke(type);
     }
 
 	public void TakeDamage(float value){
@@ -29,7 +41,7 @@ public class Character : MonoBehaviour {
         {
             return;
         }
-        SetHealth(health -= value);
+        SetHealth(health -= value , hpUpdateType.damage);
 		if (health <= 0) {
 			Die ();
 		}

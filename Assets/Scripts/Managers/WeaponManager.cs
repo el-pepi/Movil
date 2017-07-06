@@ -12,6 +12,8 @@ public class WeaponManager : MonoBehaviour {
 
     public ObjectPool[] projectilePools;
 
+    public ObjectPool[] weaponPools;
+
     public static WeaponManager instance;
     float rot;
 
@@ -19,6 +21,8 @@ public class WeaponManager : MonoBehaviour {
     public UnityEvent fireEvent;
 
     public float weaponTimer = 0;
+
+    int killsTillDrop = 15;
 
     void Awake(){
 		instance = this;
@@ -116,6 +120,19 @@ public class WeaponManager : MonoBehaviour {
         if (actualWeapon)
         {
             actualWeapon.OnFireRelease();
+        }
+    }
+
+    public void WeaponDrop(Vector3 position)
+    {
+        killsTillDrop--;
+        if (killsTillDrop <= 0)
+        {
+            killsTillDrop = Random.Range(40,60);
+
+            GameObject g = weaponPools[Random.Range(0, weaponPools.Length)].getPooledObject();
+
+            g.transform.position = position;
         }
     }
 }

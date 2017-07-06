@@ -23,9 +23,20 @@ public class IngameScreen : MonoBehaviour {
         gameObject.SetActive(GameManager.instance.state == GameState.Game);
     }
 
-    void UpdatePlayerHealth()
+    void UpdatePlayerHealth(hpUpdateType type)
     {
         healthLabel.text = ((int)PlayerManager.instance.GetPlayer().GetHealth()).ToString("");
-		glowAnim.SetTrigger ("Hit");
+        if (type == hpUpdateType.damage)
+        {
+        }
+        switch (type)
+        {
+            case hpUpdateType.damage:
+                glowAnim.SetTrigger("Hit");
+            break;
+            case hpUpdateType.heal:
+                glowAnim.SetTrigger("Heal");
+            break;
+        }
     }
 }

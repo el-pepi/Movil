@@ -9,7 +9,7 @@ public class WeaponPicup : MonoBehaviour {
         if (collision.tag == "Player")
         {
             WeaponManager.instance.SwitchToWeapon(weaponNumber);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

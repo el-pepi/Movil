@@ -11,6 +11,38 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1884474481760268}
   m_IsPrefabParent: 1
+--- !u!1 &1002085171367596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4484274811579598}
+  - component: {fileID: 114442428218214426}
+  m_Layer: 0
+  m_Name: RocketItemPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1506335594722400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4347834078270970}
+  - component: {fileID: 114047836964666000}
+  m_Layer: 0
+  m_Name: RocketPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1540333580406666
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,7 +69,7 @@ GameObject:
   - component: {fileID: 4049565037321052}
   - component: {fileID: 114245239778123534}
   m_Layer: 0
-  m_Name: RocketPool
+  m_Name: HpItemPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +102,33 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4970681278614436}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4347834078270970
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506335594722400}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4970681278614436}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4484274811579598
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002085171367596}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4970681278614436}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4920504206683084
 Transform:
@@ -96,10 +154,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4920504206683084}
+  - {fileID: 4347834078270970}
+  - {fileID: 4484274811579598}
   - {fileID: 4049565037321052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114047836964666000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506335594722400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae9dc3b981e541498a7c87f95d5be6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 1085827888681088, guid: d7bf775d988c8054893efa047f0d92ff, type: 2}
+  startSize: 10
 --- !u!114 &114245239778123534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,8 +184,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae9dc3b981e541498a7c87f95d5be6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1085827888681088, guid: d7bf775d988c8054893efa047f0d92ff, type: 2}
-  startSize: 10
+  obj: {fileID: 1430975478653468, guid: 8efd9e54f366d6945b42ecccdd83e325, type: 2}
+  startSize: 3
+--- !u!114 &114442428218214426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002085171367596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae9dc3b981e541498a7c87f95d5be6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 1455159614157850, guid: 551e51d7c1223bb458a81f494186bbe6, type: 2}
+  startSize: 3
 --- !u!114 &114548268791823140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,4 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePools:
   - {fileID: 114548268791823140}
+  - {fileID: 114047836964666000}
+  weaponPools:
+  - {fileID: 114442428218214426}
   - {fileID: 114245239778123534}
+  weaponTimer: 0
