@@ -126,6 +126,7 @@ PlayerSettings:
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   protectGraphicsMemory: 0
+  useHDRDisplay: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidPreferredInstallLocation: 1
@@ -368,7 +369,7 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   splashScreenBackgroundSourceLandscape: {fileID: 0}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
-  spritePackerPolicy: 
+  spritePackerPolicy: DefaultPackerPolicy
   webGLMemorySize: 256
   webGLExceptionSupport: 1
   webGLDataCaching: 0

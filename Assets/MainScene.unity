@@ -100,8 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 213621325}
   - component: {fileID: 213621324}
-  - component: {fileID: 213621323}
-  - component: {fileID: 213621322}
   - component: {fileID: 213621321}
   m_Layer: 0
   m_Name: Main Camera
@@ -117,20 +115,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213621320}
   m_Enabled: 1
---- !u!124 &213621322
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 213621320}
-  m_Enabled: 1
---- !u!92 &213621323
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 213621320}
-  m_Enabled: 1
 --- !u!20 &213621324
 Camera:
   m_ObjectHideFlags: 0
@@ -139,8 +123,8 @@ Camera:
   m_GameObject: {fileID: 213621320}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.5514706, g: 0.42416465, b: 0.34872404, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -148,7 +132,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 15

@@ -55,10 +55,21 @@ public class WeaponManager : MonoBehaviour {
 
     void OnGamestateChange()
     {
-        if(GameManager.instance.state == GameState.Game)
+        if (GameManager.instance.state == GameState.Game)
         {
             weaponTimer = 0;
             SwitchToWeapon(1);
+        }
+        if (GameManager.instance.state == GameState.GameOver)
+        {
+            foreach (ObjectPool p in weaponPools)
+            {
+                p.PoolAll();
+            }
+            foreach (ObjectPool p in projectilePools)
+            {
+                p.PoolAll();
+            }
         }
     }
 
